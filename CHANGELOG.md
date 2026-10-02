@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.59.0] - 2026-10-02
+
+### Added
+
+- **Přenos ignorování z e-mailových avíz do bankovního výpisu.** Při ručním importu GPC/ABO nebo PDF výpisu aplikace nabídne převzetí ignorování a poznámky z odpovídajících ručně ignorovaných e-mailových avíz. Uživatel vybere jednotlivé pohyby nebo použije „Vybrat vše“, případně import dokončí bez přenosu nebo zruší bez uložení výpisu. Nabízí se jen jednoznačné shody podle účtu, měny, částky včetně znaménka, data a VS nebo protiúčtu. Automaticky ignorovaná avíza a avíza navázaná na platby se vyřazují a jedno avízo lze použít nejvýše jednou. Automatické skenování adresáře zůstává bez přenosu. Migrace 0153 přidává `bank_transactions.ignore_origin` a auditní tabulku `bank_notice_ignore_transfers`, OpenAPI je aktualizované. (#285, díky @blondak)
+- **Akce v detailu bankovní transakce.** Detail pohybu nově nabízí podle stavu a oprávnění akce Vytvořit fakturu (nespárovaná odchozí platba), Spárovat, Ignorovat, Zrušit spárování a Zrušit ignorování. Zrušení akce vrátí původní detail, po dokončení se detail znovu neotevírá. (#284, díky @blondak)
+
+### Changed
+
+- **Texty o přechodu na MyÚčto.** Stránka přechodu, modal podpory, stránka Aktualizace a tip na dashboardu už neslibují, že vše zdarma v MyInvoice je zdarma i v MyÚčtu. Seznam placených doplňků je sjednocený: daňová evidence a účetnictví, mzdy a personalistika, sklady a e-shop, více účtovaných firem.
+
 ## [4.58.0] - 2026-09-21
 
 ### Added

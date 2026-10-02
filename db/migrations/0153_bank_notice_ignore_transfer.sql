@@ -14,9 +14,12 @@ UPDATE bank_transactions bt
 CREATE TABLE IF NOT EXISTS bank_notice_ignore_transfers (
     notice_transaction_id BIGINT UNSIGNED NOT NULL PRIMARY KEY,
     statement_transaction_id BIGINT UNSIGNED NOT NULL,
-    supplier_id TINYINT UNSIGNED NOT NULL,
+    supplier_id INT UNSIGNED NOT NULL,
     user_id BIGINT UNSIGNED NULL,
     ignore_note VARCHAR(1000) NULL,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     UNIQUE KEY uq_bank_ignore_transfer_target (statement_transaction_id)
 );
+
+-- supplier.id je od migrace 0115 INT UNSIGNED; srovná i instance s dřívějším TINYINT.
+ALTER TABLE bank_notice_ignore_transfers MODIFY COLUMN supplier_id INT UNSIGNED NOT NULL;
